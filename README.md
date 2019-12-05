@@ -1,4 +1,4 @@
-# svz-managers
+# svz-time-manager
 
 This module provides four management classes for manipulating Numbers, Objects, Cookies, and Dates in ways with multiple use cases I've employed on a number of occasions.
 
@@ -6,187 +6,192 @@ This module provides four management classes for manipulating Numbers, Objects, 
 To install, in terminal type
 
 ```
-	npm i --save svz-managers
+	npm i --save svz-time-manager
 ```
 
-then, in your react project,
+then, in your project,
 
 ```
-import {[Desired Class]} from svz-managers;
+import TimeManager from 'svz-time-manager';
 ```  
 
 
-# ObjectManager(object, callbacks)
+# TimeManager(time)
 <details><summary>Manipulates a supplied <strong>Array</strong> or <strong>Object</strong> as needed for a variety of use cases.</summary>
 <p>
+___
 
 ## Class Variables
-* **object**  
-the **Array** or **Object** ObjectManager is using.  
+* **time**  
+**Type: Date**||**Number**  
+When this is set to a **Date**, that date is used for the purposes of the functions. When this is set to a **Number**, it instead uses that quantity of milliseconds as the basis for the methods.
 
 * **type**  
 **Read Only**  
-Whether **this.object** is an **Array** or **Object**
+Returns **date** if **time** is set to a **Date**, and returns 'ms' if it is set to a **Number** of milliseconds. Each return has a different behavior depending on which type is being used, as is clarified in the description of each **class** variable below.
 
-* **callbacks**  
-**Type:** **Array** of **function**s || **function**
-The array of functions used in **runCallbacks()**, or the first function in that array.
+* **fromToday**  
+**Read Only**  
+Returns the date an amount of time into the future from the current moment.
 
+* **milliseconds**  
+**Read Only**  
+**ms:** Returns the total number of milliseconds in the time period given.
+**date:** Returns the number of milliseconds from the last second in the **Date** given.
+
+* **seconds**  
+**Read Only**  
+**ms:** Returns the total number of seconds in the time period given.
+**date:** Returns the total number of seconds from the beginning of the last minute in the **Date** given.
+
+* **minutes**
+**Read Only**
+**ms:** Returns the total number of minutes in the time period given.
+**date:** Returns the total number of minutes from the beginning of the last hour in the **Date** given.
+
+* **hours**
+**Read Only**
+**ms:** Returns the total number of hours in the time period given.
+**date:** Returns the total number of hours from the beginning of the last day in the **Date** given.
+
+* **days**
+**Read Only**
+**ms:** Returns the total number of days in the time period given.
+**date:** Returns the total number of days from the beginning of the last month in the **Date** given.
+
+* **weekday**
+**Read Only**
+**ms:** Returns the full name of the weekday that the time period given would fall on, starting from 0 at 00:00 Sunday.
+**date:** Returns the full name of the weekday of the **Date** given.
+
+* **millisecond**
+**ms:** sets or returns the total time in milliseconds.
+**date:** sets or returns the total milliseconds from the last second in the **Date** given.
+
+* **second**
+**ms:** sets or returns the total time in seconds.
+**date:** sets or returns the total seconds from the last minute in the **Date** given.
+
+* **minute**
+**ms:** sets or returns the total time in **mm:ss** format.
+**date:** sets or returns the total time in **mm:ss** from the last minute in the **Date** given.
+
+* **hour**
+**ms:** sets or returns the total time in **mm:ss** format.
+**date:** sets or returns the total time in **mm:ss** from the last minute in the **Date** given.
+
+* **day**
+**ms:** sets or returns the total time in **mm:ss** format.
+**date:** sets or returns the total time in **mm:ss** from the last minute in the **Date** given.
+___
+
+</p>
+</details>
 
 ## Methods
 
-### filter (test)
-<details><summary>Applies a function similar to Array.prototype.filter, but can also be applied to Objects. Applied to <strong>this.object</strong></summary>
+### millisecondsFrom (inputDate, absolute)
+<details><summary>Gets milliseconds either between the set millisecond amount or between the set date and another date.</summary>
 
-*Has **static** version*
+* **inputDate**  
+**Type:** **Date**||**Number**
+**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
+This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **test**  
-**Type:** **function**  
-**Default:** e => e  
-Applied to each entry, and removing entries resolving to **false**.</details>
+* **absolute**
+**Type:** **Boolean**
+If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
-### runCallbacks()
-Runs each function in the **callbacks** array for each entry in **object**
+### secondsFrom (inputDate, absolute)
+<details><summary>Gets seconds either between the set millisecond amount or between the set date and another date.</summary>
 
-### addCallback(callback)
-<details><summary>Adds function to <strong>callbacks</strong> Class Variable.</summary>
+* **inputDate**  
+**Type:** **Date**||**Number**
+**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
+This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **callback**  
-**Type:** **function**  
-**Syntax:** callback(entry, index)
-The function to be added.</details>
+* **absolute**
+**Type:** **Boolean**
+If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
-### removeCallback(callback)
-<details><summary>Removes a callback from <strong>callbacks</strong> Class Variable.</summary>
+### minutesFrom (inputDate, absolute)
+<details><summary>Gets minutes either between the set millisecond amount or between the set date and another date.</summary>
 
-* **callback**  
-**Type: function**  
-**Syntax:** callback(entry, index)  
-The function to be removed.</details>
+* **inputDate**  
+**Type:** **Date**||**Number**
+**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
+This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-### sequential(callback, init, keysOrLength)
-<details><summary>Applies a sequentially determined value as key values in <strong>this.object</strong>.</summary>
+* **absolute**
+**Type:** **Boolean**
+If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
-* **callback**  
-**Optional**  
-**Type:** **function**  
-**Default:** val => val+1  
-Transformation of the previous value into the next value.
+### hoursFrom (inputDate, absolute)
+<details><summary>Gets hours either between the set millisecond amount or between the set date and another date.</summary>
 
-* **init**  
-**Optional**  
-**Default:** 0  
-First value. The second value is callback(init), and so forth.
+* **inputDate**  
+**Type:** **Date**||**Number**
+**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
+This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **keys**  
-**Optional**  
-**Type:** **Array**  
-List of keys in order of which to apply the growing value.
-</details>
+* **absolute**
+**Type:** **Boolean**
+If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
-## Statics
+### daysFrom (inputDate, absolute)
+<details><summary>Gets days either between the set millisecond amount or between the set date and another date.</summary>
 
-### fill(object, val, keys, overwrite)
-<details><summary>operates as a targeted fill function for an existing <strong>Array</strong> or <strong>Object.</strong></summary>
+* **inputDate**  
+**Type:** **Date**||**Number**
+**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
+This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **object**
-**Type:** **Array** || **Object**
-The target of the function.
+* **absolute**
+**Type:** **Boolean**
+If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
-* **val**
-The value that will be used to fill each specified key value.
+### yearsFrom (inputDate, absolute)
+<details><summary>Gets years either between the set millisecond amount or between the set date and another date.</summary>
 
-* **keys**
-**Type: Array**
-The keys targeted by the function. If not specified, all existing keys will be targeted.
+* **inputDate**  
+**Type:** **Date**||**Number**
+**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
+This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **overwrite**
-**Type: Boolean**
-**Default: true**
-Determines whether to overwrite currently not undefined values.
+* **absolute**
+**Type:** **Boolean**
+If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
-</details>
+### centuriesFrom (inputDate, absolute)
+<details><summary>Gets centuries either between the set millisecond amount or between the set date and another date.</summary>
 
-### filter (object, test)
-<details><summary>Applies a function similar to Array.prototype.filter, but is also usable on Objects.</summary>
+* **inputDate**  
+**Type:** **Date**||**Number**
+**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
+This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **object**  
-**Type: Object**  
-The object that is being filtered.
-</details>
+* **absolute**
+**Type:** **Boolean**
+If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
-### filterJoin (arr, joinVal)
-<details><summary>Filters out values in <strong>arr</strong> and returns a string of the remaining values in order, joined together.</summary>
+### milleniaFrom (inputDate, absolute)
+<details><summary>Gets millenia either between the set millisecond amount or between the set date and another date.</summary>
 
-* **arr**  
-**Type: Array**  
-**Syntax:** values can be either **String**||**Number**, a **falsy** value or a sub-array pair of [**String**||**Number**, **Boolean**]. This is converted to a string including the non-**falsy** values and sub-array pairs' **String**||**Number** where the **Boolean** resolves to **true**.
+* **inputDate**  
+**Type:** **Date**||**Number**
+**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
+This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **joinVal**  
-**Type: String** || **Number**  
-**Default:** " "  
-The join between each of the active values.
-</details>
+* **absolute**
+**Type:** **Boolean**
+If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
-### forEach(object, callback)
-<details><summary>Runs a function for each entry in the <strong>Object</strong> or <strong>Array</strong></summary>
+## Author
 
-* **object**  
-**Type: Object** or **Array**  
-The target of the function.
+* **Colin Brennan** - *full project* - [SysVisionz Github](https://github.com/SysVisionz), [SysVisionz NPM Modules](https://www.npmjs.com/~sysvisionz)
 
-* **callback**  
-**Type: function**  
-**Syntax:** **callback**(value, key)  
-The function run for each of the values in the **Object** or **Array**.
-</details>
+## Version History
+<details><summary>1</summary>
 
-### makeFill(val, keysOrLength)
-<details><summary>creates an <strong>Array</strong> or <strong>Object</strong> with the specified key values or length.</summary>
-
-* **val**
-The value which will be used for each entry.
-
-* **keysOrLength**
-**Type:** **Array** || **Number**
-Either a an **Array** of the keys to which the value will be initialized or a **Number** stating how long the **Array** will be.
-
-</details>
-
-### map(object, callback)
-<details><summary>Runs a map function through each entry in the <strong>Object</strong> or <strong>Array</strong></summary>
-
-* **object**  
-**Type: Object** or **Array**  
-The target of the function.
-
-* **callback**  
-**Type: function**  
-**Syntax:** **callback**(value, key)  
-The function run for each of the values in the **Object** or **Array**.
-
-</details>
-
-### sequential(callback, init, keys)
-<details><summary>Creates an <strong>Array</strong> or <strong>Object</strong>of sequentially generated values</summary>
-
-* **callback**
-**Type: function**
-**Default:** val => val + 1
-**Syntax:** **callback**(currentValue)
-The callback function creates the next value in the sequence from the current value in the sequence.
-
-* **init**
-**Default:** 1;
-The value the sequence initializes the first key at. The second key is determined by running **callback**(**init**), and so on.
-
-* **keys**
-
-**Optional**
-**Type: Array**
-An array of keys used in order to create the sequential values (where (val => val+1, 1))
-
-</details>
-
-</p>
+1.0.0 -  Initial Release.
 </details>

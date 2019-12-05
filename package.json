@@ -1,7 +1,7 @@
 {
   "name": "svz-time-manager",
   "version": "1.0.0",
-  "description": "A tool Dates and time spaces, with a variety of use cases, including reporting lengths of time between two times.",
+  "description": "A tool for managing Dates and time spaces, with a variety of use cases, including reporting lengths of time between two times in any measurement, from ms to millenia.",
   "keywords": [
     "object",
     "array",
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SysVisionz/svz-managers.git"
+    "url": "git+https://github.com/SysVisionz/svz-time-manager.git"
   },
   "author": "Colin Brennan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SysVisionz/svz-managers/issues"
+    "url": "https://github.com/SysVisionz/svz-time-manager/issues"
   },
-  "homepage": "https://github.com/SysVisionz/svz-managers#readme",
+  "homepage": "https://github.com/SysVisionz/svz-time-manager#readme",
   "devDependencies": {
     "@babel/core": "^7.7.4",
     "@babel/plugin-proposal-class-properties": "^7.7.4",
@@ -33,5 +33,7 @@
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },
-  "dependencies": {}
+  "dependencies": {
+    "svz-number-manager": "^1.0.0"
+  }
 }

@@ -45,23 +45,23 @@ Returns the date an amount of time into the future from the current moment.
 **ms:** Returns the total number of seconds in the time period given.  
 **date:** Returns the total number of seconds from the beginning of the last minute in the **Date** given.
 
-* **minutes**
-**Read Only**
+* **minutes**  
+**Read Only**  
 **ms:** Returns the total number of minutes in the time period given.  
 **date:** Returns the total number of minutes from the beginning of the last hour in the **Date** given.
 
-* **hours**
-**Read Only**
+* **hours**  
+**Read Only**  
 **ms:** Returns the total number of hours in the time period given.  
 **date:** Returns the total number of hours from the beginning of the last day in the **Date** given.
 
-* **days**
-**Read Only**
+* **days**  
+**Read Only**  
 **ms:** Returns the total number of days in the time period given.  
 **date:** Returns the total number of days from the beginning of the last month in the **Date** given.
 
-* **weekday**
-**Read Only**
+* **weekday**  
+**Read Only**  
 **ms:** Returns the full name of the weekday that the time period given would fall on, starting from 0 at 00:00 Sunday.
 **date:** Returns the full name of the weekday of the **Date** given.
 

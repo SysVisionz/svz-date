@@ -100,7 +100,7 @@ ___
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**
-**Type:** **Boolean**
+**Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
 ### secondsFrom (inputDate, absolute)
@@ -112,7 +112,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**
-**Type:** **Boolean**
+**Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
 ### minutesFrom (inputDate, absolute)
@@ -124,7 +124,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**
-**Type:** **Boolean**
+**Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
 ### hoursFrom (inputDate, absolute)
@@ -136,7 +136,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**
-**Type:** **Boolean**
+**Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
 ### daysFrom (inputDate, absolute)
@@ -148,7 +148,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**
-**Type:** **Boolean**
+**Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
 ### yearsFrom (inputDate, absolute)
@@ -160,7 +160,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**
-**Type:** **Boolean**
+**Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
 ### centuriesFrom (inputDate, absolute)
@@ -172,7 +172,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**
-**Type:** **Boolean**
+**Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
 ### milleniaFrom (inputDate, absolute)
@@ -184,7 +184,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**
-**Type:** **Boolean**
+**Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
 ## Author

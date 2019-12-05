@@ -19,7 +19,7 @@ import TimeManager from 'svz-time-manager';
 # TimeManager(time)
 <details><summary>Manipulates a supplied <strong>Array</strong> or <strong>Object</strong> as needed for a variety of use cases.</summary>
 <p>
-	
+
 ___
 
 ## Class Variables
@@ -37,27 +37,27 @@ Returns the date an amount of time into the future from the current moment.
 
 * **milliseconds**  
 **Read Only**  
-**ms:** Returns the total number of milliseconds in the time period given.
+**ms:** Returns the total number of milliseconds in the time period given.  
 **date:** Returns the number of milliseconds from the last second in the **Date** given.
 
 * **seconds**  
 **Read Only**  
-**ms:** Returns the total number of seconds in the time period given.
+**ms:** Returns the total number of seconds in the time period given.  
 **date:** Returns the total number of seconds from the beginning of the last minute in the **Date** given.
 
 * **minutes**
 **Read Only**
-**ms:** Returns the total number of minutes in the time period given.
+**ms:** Returns the total number of minutes in the time period given.  
 **date:** Returns the total number of minutes from the beginning of the last hour in the **Date** given.
 
 * **hours**
 **Read Only**
-**ms:** Returns the total number of hours in the time period given.
+**ms:** Returns the total number of hours in the time period given.  
 **date:** Returns the total number of hours from the beginning of the last day in the **Date** given.
 
 * **days**
 **Read Only**
-**ms:** Returns the total number of days in the time period given.
+**ms:** Returns the total number of days in the time period given.  
 **date:** Returns the total number of days from the beginning of the last month in the **Date** given.
 
 * **weekday**
@@ -66,23 +66,23 @@ Returns the date an amount of time into the future from the current moment.
 **date:** Returns the full name of the weekday of the **Date** given.
 
 * **millisecond**
-**ms:** sets or returns the total time in milliseconds.
+**ms:** sets or returns the total time in milliseconds.  
 **date:** sets or returns the total milliseconds from the last second in the **Date** given.
 
 * **second**
-**ms:** sets or returns the total time in seconds.
+**ms:** sets or returns the total time in seconds.  
 **date:** sets or returns the total seconds from the last minute in the **Date** given.
 
 * **minute**
-**ms:** sets or returns the total time in **mm:ss** format.
+**ms:** sets or returns the total time in **mm:ss** format.  
 **date:** sets or returns the total time in **mm:ss** from the last minute in the **Date** given.
 
 * **hour**
-**ms:** sets or returns the total time in **mm:ss** format.
+**ms:** sets or returns the total time in **mm:ss** format.  
 **date:** sets or returns the total time in **mm:ss** from the last minute in the **Date** given.
 
 * **day**
-**ms:** sets or returns the total time in **mm:ss** format.
+**ms:** sets or returns the total time in **mm:ss** format.  
 **date:** sets or returns the total time in **mm:ss** from the last minute in the **Date** given.
 ___
 

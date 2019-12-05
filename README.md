@@ -99,7 +99,7 @@ ___
 **Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **absolute**
+* **absolute**  
 **Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
@@ -111,7 +111,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 **Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **absolute**
+* **absolute**  
 **Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
@@ -123,7 +123,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 **Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **absolute**
+* **absolute**  
 **Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
@@ -135,7 +135,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 **Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **absolute**
+* **absolute**  
 **Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
@@ -147,7 +147,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 **Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **absolute**
+* **absolute**  
 **Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
@@ -159,7 +159,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 **Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **absolute**
+* **absolute**  
 **Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 
@@ -171,7 +171,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 **Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
-* **absolute**
+* **absolute**  
 **Type:** **Boolean**  
 If set to **true**, the value returned is a positive number, regardless of whether it is before or after the time given.</details>
 

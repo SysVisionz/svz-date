@@ -65,23 +65,23 @@ Returns the date an amount of time into the future from the current moment.
 **ms:** Returns the full name of the weekday that the time period given would fall on, starting from 0 at 00:00 Sunday.
 **date:** Returns the full name of the weekday of the **Date** given.
 
-* **millisecond**
+* **millisecond**  
 **ms:** sets or returns the total time in milliseconds.  
 **date:** sets or returns the total milliseconds from the last second in the **Date** given.
 
-* **second**
+* **second**  
 **ms:** sets or returns the total time in seconds.  
 **date:** sets or returns the total seconds from the last minute in the **Date** given.
 
-* **minute**
+* **minute**  
 **ms:** sets or returns the total time in **mm:ss** format.  
 **date:** sets or returns the total time in **mm:ss** from the last minute in the **Date** given.
 
-* **hour**
+* **hour**  
 **ms:** sets or returns the total time in **mm:ss** format.  
 **date:** sets or returns the total time in **mm:ss** from the last minute in the **Date** given.
 
-* **day**
+* **day**  
 **ms:** sets or returns the total time in **mm:ss** format.  
 **date:** sets or returns the total time in **mm:ss** from the last minute in the **Date** given.
 ___

@@ -19,6 +19,7 @@ import TimeManager from 'svz-time-manager';
 # TimeManager(time)
 <details><summary>Manipulates a supplied <strong>Array</strong> or <strong>Object</strong> as needed for a variety of use cases.</summary>
 <p>
+	
 ___
 
 ## Class Variables

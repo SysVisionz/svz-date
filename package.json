@@ -1,15 +1,17 @@
 {
-  "name": "svz-time-manager",
+  "name": "svz-date",
   "version": "1.0.0",
-  "description": "A tool for managing Dates and time spaces, with a variety of use cases, including reporting lengths of time between two times in any measurement, from ms to millenia.",
+  "description": "A tool for managing Dates and time spaces, with a variety of use cases, including formatting from a string and reporting lengths of time between two times in any measurement, from ms to millenia.",
   "keywords": [
-    "object",
+    "date",
+    "format",
+    "datetime",
     "array",
     "sysvisionz",
     "utilities",
     "management"
   ],
-  "main": "/build/index.js",
+  "main": "/dist/index.js",
   "scripts": {
     "start": "webpack --watch",
     "build": "webpack"
@@ -34,6 +36,7 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "svz-number-manager": "^1.0.0"
+    "svz-number-manager": "^1.0.0",
+    "typescript": "^4.9.5"
   }
 }

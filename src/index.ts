@@ -3,7 +3,7 @@ type FormatObject = {type: FormatCategories, value: string}
 type FormatItem = string | FormatObject
 type FormatDateItem = (string | ((date: Date) => string))
 
-export default class TimeManager {
+export default class SVZDate {
 	__date: Date
 	formatArr?: FormatDateItem[]
 	formatString?: string
@@ -92,8 +92,8 @@ export default class TimeManager {
 			ms = `${Array(4 - ms.length).fill('0').join('')}${ms}`
 			return ms.substring(0, digits)
 		}
-		const zoner = (date: Date, timeZone: Intl.DateTimeFormatOptions["timeZoneName"]): string => {
-			let time = formatFromDate({timeZone})(date)
+		const zoner = (date: Date, timeZoneName: Intl.DateTimeFormatOptions["timeZoneName"]): string => {
+			let time = formatFromDate({timeZoneName})(date)
 			return time.substring((time.match(/(AM|PM)/)?.index || 0) + 3)
 		}
 		const formats: {
@@ -189,15 +189,18 @@ export default class TimeManager {
 				}
 			}
 		}
-		this.formatArr = format.split('AM/PM').reduce((full: FormatItem[], current: string) => {
+		const basef = format.split('AM/PM').reduce((full: FormatItem[], current: string) => {
 			const retval = full
 			.concat(current
 				.split('am/pm')
 				.reduce((full: FormatItem[], current: string) => {
 				return full.concat([current, {type: 'AM/PM', value: 'am/pm'}])
 			}, []))
-			return full.concat(retval);
-		},[]).reduce((full: FormatItem[], current: FormatItem) => {
+			retval.pop()
+			return retval.concat({type: 'AM/PM', value: 'AM/PM'});
+		},[])
+		basef.pop()
+		this.formatArr = basef.reduce((full: FormatItem[], current: FormatItem) => {
 			return full.concat(typeof current === 'string' ? formatter(current) : current)
 		},[]).map(value => {
 			if (typeof value === 'string') {

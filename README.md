@@ -191,8 +191,7 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 
 * **Colin Brennan** - *full project* - [SysVisionz Github](https://github.com/SysVisionz), [SysVisionz NPM Modules](https://www.npmjs.com/~sysvisionz)
 
-## Version History
-<details><summary>1</summary>
+## Version History  
+1.0.0 -  Initial Release.  
 
-1.0.0 -  Initial Release.
-</details>
+2.0.0 - Now with typescript, and a while bunch of new features!  

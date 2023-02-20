@@ -9,7 +9,7 @@ export default class SVZDate {
 	formatString?: string
 	locale?: Intl.Locale
 
-	constructor(time: Date | number = new Date()){
+	constructor(time: Date | number | string = new Date()){
 		this.__date = new Date(time);
 	}
 

@@ -5,7 +5,6 @@ type FormatDateItem = (string | ((date: Date) => string))
 
 export default class TimeManager {
 	__date: Date
-	typeVal: string
 	formatArr?: FormatDateItem[]
 	formatString?: string
 	locale?: Intl.Locale
@@ -14,21 +13,15 @@ export default class TimeManager {
 		this.__date = new Date(time);
 	}
 
-	set time(entry){
-		if (entry === undefined){
-			this.__date = new Date();
-		}
-		else{
-			this.typeVal = typeof entry === 'number' ? 'ms' : 'date';
-			this.__date = new Date(entry);
-		}
+	set value(entry: Date | number | string){
+		this.__date = new Date(entry);
 	}
 
 	toString () {
 		if (!this.formatArr){
 			return this.__date.toString()
 		}
-		this.formatArr.reduce((str: string, current: FormatDateItem) => {
+		return this.formatArr.reduce((str: string, current: FormatDateItem) => {
 			return typeof current === 'string'
 			? str.concat(current)
 			: str.concat( current(this.__date) )
@@ -103,17 +96,20 @@ export default class TimeManager {
 			let time = formatFromDate({timeZone})(date)
 			return time.substring((time.match(/(AM|PM)/)?.index || 0) + 3)
 		}
-		const formats: {[Style in FormatCategories]: {
-			[value: string]: {
-				[number: number]: (date?: Date) => string
+		const formats: {
+			'AM/PM': {
+				[Case in 'A' | 'a']: (date?: Date) => string
 			}
-		} 
-		| {
-			[value: string]: (date?: Date) => string
-		}
-		| {
-			[number: number]: (date?: Date) => string
-		}} = {
+		} & { 
+			[CaseSensitive in 'month' | 'hour' | 'zone']: {
+				[value: string]: {
+					[number: number]: (date?: Date) => string
+				}
+			}
+		} & {
+			[CaseInsensitive in 'year' | 'day' | 'minute' | 'second' | 'ms' | 'offset' | 'weekday']: {
+				[number: number]: (date?: Date) => string
+			}} = {
 			year: {
 				2: formatFromDate({year: '2-digit'}),
 				4: formatFromDate({year: 'numeric'})
@@ -209,7 +205,7 @@ export default class TimeManager {
 			}
 			switch(value.type){
 				case 'AM/PM':
-					return formats['AM/PM'][value.value.substring(0, 1)]
+					return formats['AM/PM'][value.value.substring(0, 1) as 'a' | 'A']
 				case 'month':
 				case 'hour':
 				case 'zone':
@@ -227,7 +223,7 @@ export default class TimeManager {
 	}
 
 	set fromToday(val){
-		throw "SyntaxError: fromToday is a read-only variable."
+		this.__date = new Date(new Date(val).getTime() + new Date().getTime())
 	}
 
 	set millisecond(milliseconds){ this.__date.setTime(milliseconds) }
@@ -314,7 +310,7 @@ export default class TimeManager {
 		return Math[span >= 0 ? 'floor' : 'ceil'](span)
 	}
 
-	millisecondsFrom = (inputDate: Date | number | string = new Date(), absolute) => {
+	millisecondsFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => {
 		if (typeof inputDate === 'number'){
 			inputDate = new Date(inputDate)
 		}
@@ -322,17 +318,17 @@ export default class TimeManager {
 		return absolute ? Math.abs(span) : span;
 	}
 
-	secondsFrom = (inputDate, absolute) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/1000);
+	secondsFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/1000);
 
-	minutesFrom = (inputDate, absolute) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/60000)
+	minutesFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/60000)
 	
-	hoursFrom = (inputDate, absolute) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/3600000)
+	hoursFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/3600000)
 
-	daysFrom = (inputDate, absolute) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/86400000)
+	daysFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/86400000)
 	
-	yearsFrom = (inputDate, absolute) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/31536000000)
+	yearsFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/31536000000)
 	
-	centuriesFrom = (inputDate, absolute) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/3153600000000)
+	centuriesFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/3153600000000)
 
-	milleniaFrom = (inputDate, absolute) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/31536000000000)
+	milleniaFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/31536000000000)
 }

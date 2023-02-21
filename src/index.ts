@@ -81,6 +81,14 @@ export default class SVZDate {
 				case '0':
 					return setLast(formatArr, {type: 'ms', value})
 				default:
+					if ((lastItem as FormatObject).type === 'month'){
+						if (value === '/'){
+							(formatArr[formatArr.length - 1] as FormatObject).value = (formatArr[formatArr.length - 1] as FormatObject).value.toLocaleLowerCase()
+						}
+						else if (value === ':'){
+							(formatArr[formatArr.length - 1] as FormatObject).type = 'minute';
+						}
+					}
 					return setLast(formatArr, value)
 			}
 		}, [])

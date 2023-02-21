@@ -1,6 +1,6 @@
 {
   "name": "svz-date",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A tool for managing Dates and time spaces, with a variety of use cases, including formatting from a string and reporting lengths of time between two times in any measurement, from ms to millenia.",
   "keywords": [
     "date",

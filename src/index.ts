@@ -28,6 +28,8 @@ export default class SVZDate {
 		}, '')
 	}
 
+	valueOf() { return this.__date}
+
 	set format(format: string) {
 		this.formatString = format;
 		const setLast = (arr: FormatItem[], val: FormatItem) => {

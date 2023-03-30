@@ -325,6 +325,8 @@ export default class SVZDate {
 	/** current UTC Year for this.__date */
 	get UTCYear () { return this.__date.getUTCFullYear() }
 
+	get ISOString() { return this.__date.toISOString() }
+
 	private roundTimeSpanDown = (span: number) => {
 		return Math[span >= 0 ? 'floor' : 'ceil'](span)
 	}

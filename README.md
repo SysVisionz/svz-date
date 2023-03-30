@@ -16,13 +16,63 @@ import TimeManager from 'svz-time-manager';
 ```  
 
 
-# TimeManager(time)
-<details><summary>Manipulates a supplied <strong>Array</strong> or <strong>Object</strong> as needed for a variety of use cases.</summary>
+# SVZDate(time)
+Manipulates a supplied date in a variety of ways to suit all your datetime needs!
 <p>
 
 ___
 
 ## Class Variables
+
+* **format** 
+**Type: string** 
+This is probably one of the best features of the SVZDate. When you supply a string setting your format, given particular parameters, the result of the toString method will be altered to reflect your new format! 
+<details><summary>Formatting string specifics</summary>
+
+YY | yy: a 2 digit date string (88) 
+YYYY | yyyy: a full date string. (1988) 
+
+M or m when directly preceded or followed by time value \( h, s, 0, z, am/pm, \): 
+M | m : minutes without leading 0. 
+MM | mm : 2 digit minutes. 
+
+M or m otherwise: 
+m: month without leading 0. 
+mm: 2 digit months. 
+M: first letter of month. 
+MM: three letter month abbreviation. 
+MMM: full month 
+
+D | d: Day of month without leading 0. 
+DD | dd: Day of month in two digit format. 
+
+W | w: First letter of weekday. 
+WW | ww: Three letter weekday abbreviation. 
+WWW | www: full weekday as string. 
+
+h: 12 hour style hour without leading 0. 
+hh: 2 digit 12 hour style hour. 
+H: 24 hour style hour without leading 0. 
+HH: 2 24 hour style hour. 
+
+S | s: seconds without leading 0. 
+SS | ss: seconds in 2 digit format.  
+
+0 | 00 | 000 | 0000: milliseconds by that number of digits.  
+
+z: generic timezone letter abbreviation.  
+zz: full generic timezone name.  
+Z: timezone letter abbrevation.  
+ZZ: full timezone name.  
+
+O | o: timezone offset without leading 0.  
+OO | o: timezone offset in 2 digit format.  
+
+AM/PM : AM or PM of 12 hour time.  
+am/pm : am or pm of 12 hour time.  
+
+</details>
+
 * **time**  
 **Type: Date**||**Number**  
 When this is set to a **Date**, that date is used for the purposes of the functions. When this is set to a **Number**, it instead uses that quantity of milliseconds as the basis for the methods.
@@ -87,7 +137,6 @@ Returns the date an amount of time into the future from the current moment.
 ___
 
 </p>
-</details>
 
 ## Methods
 

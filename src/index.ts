@@ -1,5 +1,5 @@
-type FormatCategories = 'year' | 'month' | 'weekday' | 'day' | 'hour' | 'minute' | 'second' | 'ms' | 'AM/PM' | 'zone' | 'offset'
-type FormatObject = {type: FormatCategories, value: string}
+type FormatCategory = 'year' | 'month' | 'weekday' | 'day' | 'hour' | 'minute' | 'second' | 'ms' | 'AM/PM' | 'zone' | 'offset'
+type FormatObject = {type: FormatCategory, value: string}
 type FormatItem = string | FormatObject
 type FormatDateItem = (string | ((date: Date) => string))
 
@@ -32,6 +32,7 @@ export default class SVZDate {
 
 	set format(format: string) {
 		this.formatString = format;
+		const timeType = (val?: FormatCategory) => !!val && ['hour' , 'minute' , 'second' , 'ms' , 'AM/PM' , 'zone' , 'offset'].includes(val)
 		const setLast = (arr: FormatItem[], val: FormatItem) => {
 			if (typeof val === typeof arr[arr.length-1]){
 				if (typeof val === 'string'){
@@ -47,53 +48,58 @@ export default class SVZDate {
 			}
 			return arr.concat(val)
 		}
-		const formatter = (formatString: string): FormatItem[] => formatString.split('').reduce((formatArr: FormatItem[], value: string) => {
-			const lastItem = formatArr[formatArr.length - 1];
-			switch(value){
-				case 'Y':
-				case 'y':
-					return setLast(formatArr, {type: 'year', value})
-				case 'm':
-				case 'M':
-					if ( typeof lastItem === 'object' && lastItem.type === 'hour' || lastItem === ':' ){
-						return setLast(formatArr, {type: 'minute', value})
-					}
-					return setLast(formatArr, {type: 'month', value: lastItem === '/' ? value.toLocaleLowerCase() : value})
-				case 'W':
-				case 'w':
-					return setLast(formatArr, {type: 'weekday', value})
-				case 'd':
-				case 'D':
-					return setLast(formatArr, {type: 'day', value})
-				case 'h':
-				case 'H':
-					return setLast(formatArr, {type: 'hour', value})
-				case 'Z':
-				case 'z':
-					return setLast(formatArr, {type: 'zone', value})
-				case 's':
-				case 'S':
-					if (lastItem === ':' && (formatArr[formatArr.length-1] as FormatObject).type === 'month'){
-						(formatArr[formatArr.length - 1] as FormatObject).type = 'minute'
-					}
-					return setLast(formatArr, {type: 'second', value})
-				case 'o':
-				case 'O':
-					return setLast(formatArr, {type: 'offset', value})
-				case '0':
-					return setLast(formatArr, {type: 'ms', value})
-				default:
-					if ((lastItem as FormatObject).type === 'month'){
-						if (value === '/'){
-							(formatArr[formatArr.length - 1] as FormatObject).value = (formatArr[formatArr.length - 1] as FormatObject).value.toLocaleLowerCase()
+		const formatter = (formatString: string): FormatItem[] => {
+			const obj = formatString.split('').reduce((formatArr: FormatItem[], value: string) => {
+				const lastItem = formatArr[formatArr.length - 1];
+				switch(value){
+					case 'Y':
+					case 'y':
+						return setLast(formatArr, {type: 'year', value})
+					case 'm':
+					case 'M':
+						return setLast(formatArr, {type: 'month', value})
+					case 'W':
+					case 'w':
+						return setLast(formatArr, {type: 'weekday', value})
+					case 'd':
+					case 'D':
+						return setLast(formatArr, {type: 'day', value})
+					case 'h':
+					case 'H':
+						return setLast(formatArr, {type: 'hour', value})
+					case 'Z':
+					case 'z':
+						return setLast(formatArr, {type: 'zone', value})
+					case 's':
+					case 'S':
+						if (lastItem === ':' && (formatArr[formatArr.length-1] as FormatObject).type === 'month'){
+							(formatArr[formatArr.length - 1] as FormatObject).type = 'minute'
 						}
-						else if (value === ':'){
-							(formatArr[formatArr.length - 1] as FormatObject).type = 'minute';
-						}
+						return setLast(formatArr, {type: 'second', value})
+					case 'o':
+					case 'O':
+						return setLast(formatArr, {type: 'offset', value})
+					case '0':
+						return setLast(formatArr, {type: 'ms', value})
+					default:
+						return setLast(formatArr, value)
+				}
+			}, [])
+			return obj.map((value, i) => {
+				const check = (next: FormatItem | undefined, after: FormatObject | undefined): boolean => typeof next === 'object'
+					? timeType(next.type)
+					: next?.length === 1 && timeType(after?.type)
+				if (typeof value === 'object' && value.type === 'month'){
+					if (value.value.length < 3 && ![[obj[i-1], obj[i-2]], [obj[i+1],obj[i+2]]].some(val => check(val[0], val[1] as FormatObject))){
+						value.type = 'minute'
 					}
-					return setLast(formatArr, value)
-			}
-		}, [])
+					else {
+						value.value = value.value.toLowerCase()
+					}
+				}
+				return value;
+			})
+		}
 		const formatFromDate = (formatOptions: Intl.DateTimeFormatOptions): ((date?: Date) => string) => {
 			return (date = this.__date) => date.toLocaleString(this.locale, formatOptions)
 		}

@@ -73,13 +73,10 @@ am/pm : am or pm of 12 hour time.
 
 </details>
 
-* **time**  
-**Type: Date**||**Number**  
-When this is set to a **Date**, that date is used for the purposes of the functions. When this is set to a **Number**, it instead uses that quantity of milliseconds as the basis for the methods.
-
-* **type**  
-**Read Only**  
-Returns **date** if **time** is set to a **Date**, and returns 'ms' if it is set to a **Number** of milliseconds. Each return has a different behavior depending on which type is being used, as is clarified in the description of each **class** variable below.
+* **valid**  
+**Read Only** 
+**Type: Boolean**
+If the current string or number supplied is a valid date or not. 
 
 * **fromToday**  
 **Read Only**  

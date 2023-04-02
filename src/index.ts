@@ -245,6 +245,10 @@ export default class SVZDate {
 		return !!this.__date?.getDate()
 	}
 
+	set valid(value: any){
+		throw 'valid is read only!'
+	}
+
 	set fromToday(val){
 		this.__date = new Date(new Date(val).getTime() + new Date().getTime())
 	}

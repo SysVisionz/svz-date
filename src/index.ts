@@ -241,6 +241,10 @@ export default class SVZDate {
 		return new Date(today.getTime() + this.__date.getTime());
 	}
 
+	get valid(){
+		return !!this.__date?.getDate()
+	}
+
 	set fromToday(val){
 		this.__date = new Date(new Date(val).getTime() + new Date().getTime())
 	}

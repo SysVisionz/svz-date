@@ -75,8 +75,8 @@ am/pm : am or pm of 12 hour time.
 
 * **valid**  
 **Read Only** 
-**Type: Boolean**
-If the current string or number supplied is a valid date or not. 
+**Type: SVZDate | null**
+If the current string or number supplied is a valid date, this simply returns the SVZDate, if not it returns null.
 
 * **fromToday**  
 **Read Only**  

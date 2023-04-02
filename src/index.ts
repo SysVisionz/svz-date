@@ -241,8 +241,8 @@ export default class SVZDate {
 		return new Date(today.getTime() + this.__date.getTime());
 	}
 
-	get valid(){
-		return !!this.__date?.getDate()
+	get valid(): SVZDate | null{
+		return !!this.__date?.getDate() ? this : null
 	}
 
 	set valid(value: any){

@@ -241,11 +241,11 @@ export default class SVZDate {
 		return new Date(today.getTime() + this.__date.getTime());
 	}
 
-	get valid(): SVZDate | null{
-		return !!this.__date?.getDate() ? this : null
+	get valid(){
+		return !!this.__date?.getDate() ? this : null as SVZDate | null
 	}
 
-	set valid(value: any){
+	set valid(value: SVZDate | null){
 		throw `valid is read only! ${value} cannot be applied to it.`
 	}
 

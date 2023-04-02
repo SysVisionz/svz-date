@@ -246,7 +246,7 @@ export default class SVZDate {
 	}
 
 	set valid(value: any){
-		throw 'valid is read only!'
+		throw `valid is read only! ${value} cannot be applied to it.`
 	}
 
 	set fromToday(val){

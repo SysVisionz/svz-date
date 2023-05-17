@@ -1,4 +1,4 @@
-# svz-time-manager
+# svz-date
 
 This module provides four management classes for manipulating Numbers, Objects, Cookies, and Dates in ways with multiple use cases I've employed on a number of occasions.
 
@@ -6,13 +6,13 @@ This module provides four management classes for manipulating Numbers, Objects, 
 To install, in terminal type
 
 ```
-	npm i --save svz-time-manager
+	npm i --save svz-date
 ```
 
 then, in your project,
 
 ```
-import TimeManager from 'svz-time-manager';
+import TimeManager from 'svz-date';
 ```  
 
 

@@ -1,4 +1,4 @@
-# svz-time-manager
+# svz-date
 
 This module provides four management classes for manipulating Numbers, Objects, Cookies, and Dates in ways with multiple use cases I've employed on a number of occasions.
 
@@ -6,13 +6,13 @@ This module provides four management classes for manipulating Numbers, Objects, 
 To install, in terminal type
 
 ```
-	npm i --save svz-time-manager
+	npm i --save svz-date
 ```
 
 then, in your project,
 
 ```
-import TimeManager from 'svz-time-manager';
+import SVZDate from 'svz-date';
 ```  
 
 
@@ -137,6 +137,18 @@ ___
 
 ## Methods
 
+### add (span: number | string | Date)
+Adds the span value to the current SVZDate value.
+
+### add.year ( year: number )  
+### add.month( months: number )  
+### add.week( weeks: number )  
+### add.day( days: number )  
+### add.hour( hours: number )  
+### add.minute( minutes: number )  
+### add.second( seconds: number )  
+Adds the value provided to the current SVZDate value.
+
 ### millisecondsFrom (inputDate, absolute)
 <details><summary>Gets milliseconds either between the set millisecond amount or between the set date and another date.</summary>
 
@@ -151,11 +163,6 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 
 ### secondsFrom (inputDate, absolute)
 <details><summary>Gets seconds either between the set millisecond amount or between the set date and another date.</summary>
-
-* **inputDate**  
-**Type:** **Date**||**Number**  
-**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
-This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**  
 **Type:** **Boolean**  

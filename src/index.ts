@@ -335,29 +335,79 @@ export default class SVZDate {
 
 	get ISOString() { return this.__date.toISOString() }
 
-	private roundTimeSpanDown = (span: number) => {
+	private roundTowardsZero = (span: number) => {
 		return Math[span >= 0 ? 'floor' : 'ceil'](span)
 	}
 
+	//** takes  */
 	millisecondsFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => {
-		if (typeof inputDate === 'number'){
+		if (!(inputDate instanceof Date)){
 			inputDate = new Date(inputDate)
 		}
-		const span = this.roundTimeSpanDown((inputDate as Date).getTime() - this.__date.getTime())
+		const span = inputDate.getTime() - this.__date.getTime()
 		return absolute ? Math.abs(span) : span;
 	}
 
-	secondsFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/1000);
+	add = new Proxy((span: Date | number | string) => new Date(span), {
+		apply: (_t, _thisArg, [span]) => {
+			if (!(span instanceof Date)){
+				span = new Date(span)
+			}
+			this.__date = new Date(this.__date.getTime() + span.getTime())
+			return this.__date;
+		},
+		get: (_t, p, _r) => {
+			let multiplier = 1
+			switch(p) {
+				case 'year':
+					return (years: number) => {
+						this.__date.setFullYear(this.__date.getFullYear() + years)
+						return this.__date;
+					}
+				case 'month':
+					return (months: number) => {
+						this.__date.setMonth(this.__date.getMonth() + months);
+						return this.__date;
+					}
+				case 'week':
+					multiplier*=7;
+				case 'day':
+					multiplier*=24;
+				case 'hour':
+					multiplier*=60;
+				case 'minute':
+					multiplier*=60;
+				case 'second':
+					multiplier*=1000
+				default: 
+					return (val: number) => {
+						this.__date.setTime(this.__date.getTime() + val*multiplier)
+						return this.__date;
+					}
+			}
+		}
+	}) as unknown as {
+		(span: Date | number | string): Date,
+		years: (years: number) => Date,
+		months: (months: number) => Date,
+		weeks: (weeks: number) => Date,
+		days: (days: number) => Date,
+		hours: (hours: number) => Date,
+		minutes: (minutes: number) => Date,
+		seconds: (seconds: number) => Date
+	}
 
-	minutesFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/60000)
-	
-	hoursFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/3600000)
+	secondsFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTowardsZero(this.millisecondsFrom(inputDate, absolute)/1000);
 
-	daysFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/86400000)
+	minutesFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTowardsZero(this.millisecondsFrom(inputDate, absolute)/60000)
 	
-	yearsFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/31536000000)
-	
-	centuriesFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/3153600000000)
+	hoursFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTowardsZero(this.millisecondsFrom(inputDate, absolute)/3600000)
 
-	milleniaFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTimeSpanDown(this.millisecondsFrom(inputDate, absolute)/31536000000000)
+	daysFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTowardsZero(this.millisecondsFrom(inputDate, absolute)/86400000)
+	
+	yearsFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTowardsZero(this.millisecondsFrom(inputDate, absolute)/31536000000)
+	
+	centuriesFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTowardsZero(this.millisecondsFrom(inputDate, absolute)/3153600000000)
+
+	milleniaFrom = (inputDate: Date | number | string = new Date(), absolute?: boolean) => this.roundTowardsZero(this.millisecondsFrom(inputDate, absolute)/31536000000000)
 }

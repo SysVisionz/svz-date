@@ -154,7 +154,6 @@ Adds the value provided to the current SVZDate value.
 
 * **inputDate**  
 **Type:** **Date**||**Number**  
-**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**  
@@ -173,7 +172,6 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 
 * **inputDate**  
 **Type:** **Date**||**Number**  
-**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**  
@@ -185,7 +183,6 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 
 * **inputDate**  
 **Type:** **Date**||**Number**  
-**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**  
@@ -197,7 +194,6 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 
 * **inputDate**  
 **Type:** **Date**||**Number**  
-**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**  
@@ -209,7 +205,6 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 
 * **inputDate**  
 **Type:** **Date**||**Number**  
-**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**  
@@ -221,7 +216,6 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 
 * **inputDate**  
 **Type:** **Date**||**Number**  
-**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**  
@@ -233,7 +227,6 @@ If set to **true**, the value returned is a positive number, regardless of wheth
 
 * **inputDate**  
 **Type:** **Date**||**Number**  
-**Note:** **Date** objects cannot be used for this function when **this.type** is 'ms'  
 This is the date that is being tested. If it is after **this.day**, the value returned is positive, and if it is before **this.time** and **absolute** is not **true**, the value returned is negative.
 
 * **absolute**  
